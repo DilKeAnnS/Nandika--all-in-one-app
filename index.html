@@ -7,6 +7,7 @@
   <!-- Font Awesome 6 (free) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
+    /* ===== YOUR EXISTING STYLES (PLEASE KEEP THEM ALL) ===== */
     * {
       margin: 0;
       padding: 0;
@@ -36,7 +37,7 @@
       scroll-behavior: smooth;
     }
 
-    /* ----- HEADER (unchanged from your good version) ----- */
+    /* ----- HEADER ----- */
     .header {
       display: flex;
       flex-direction: column;
@@ -181,7 +182,7 @@
       font-weight: 400;
     }
 
-    /* ===== ATTRACTIVE TILES WITH UNIQUE DESIGNS ===== */
+    /* ===== ATTRACTIVE TILES ===== */
     .tiles-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -200,20 +201,18 @@
       box-shadow: 0 6px 18px rgba(0, 20, 40, 0.06);
       border: 1px solid #ecf2fd;
       transition: all 0.2s ease;
-      cursor: default;
+      cursor: pointer; /* <-- ADD THIS to show it's clickable */
       aspect-ratio: 1 / 1.1;
       position: relative;
       overflow: hidden;
     }
 
-    /* Remove the blank line cut issue - no top pseudo element */
     .tile-item:active {
       transform: scale(0.94);
       border-color: #aac3f0;
       box-shadow: 0 2px 8px rgba(26, 67, 113, 0.12);
     }
 
-    /* Each tile gets a unique gradient background and icon style */
     .tile-icon {
       width: 58px;
       height: 58px;
@@ -237,12 +236,10 @@
       letter-spacing: 0.2px;
     }
 
-    /* ----- UNIQUE TILE DESIGNS (each tile has its own personality) ----- */
-    /* Row 1 */
+    /* ----- UNIQUE TILE DESIGNS (YOUR EXISTING STYLES) ----- */
     .tile-item:nth-child(1) .tile-icon { background: linear-gradient(135deg, #667eea, #764ba2); color: white; }
     .tile-item:nth-child(2) .tile-icon { background: linear-gradient(135deg, #f093fb, #f5576c); color: white; }
     .tile-item:nth-child(3) .tile-icon { background: linear-gradient(135deg, #4facfe, #00f2fe); color: white; }
-    /* India tile - special flag + map */
     .tile-item:nth-child(4) .tile-icon { 
       background: linear-gradient(135deg, #ff9933, #ffffff, #138808); 
       color: #1a3a6b;
@@ -255,41 +252,33 @@
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-    /* Row 2 */
     .tile-item:nth-child(5) .tile-icon { background: linear-gradient(135deg, #a8edea, #fed6e3); color: #2d6a6a; }
     .tile-item:nth-child(6) .tile-icon { background: linear-gradient(135deg, #ffecd2, #fcb69f); color: #8b4513; }
     .tile-item:nth-child(7) .tile-icon { background: linear-gradient(135deg, #a1c4fd, #c2e9fb); color: #1f4a8a; }
     .tile-item:nth-child(8) .tile-icon { background: linear-gradient(135deg, #fbc2eb, #a6c1ee); color: #6b3f7a; }
-    /* Row 3 */
     .tile-item:nth-child(9) .tile-icon { background: linear-gradient(135deg, #fddb92, #d1fdff); color: #7a5a1a; }
     .tile-item:nth-child(10) .tile-icon { background: linear-gradient(135deg, #c1f0c1, #a8e6cf); color: #1f6b3a; }
     .tile-item:nth-child(11) .tile-icon { background: linear-gradient(135deg, #d4a5f5, #b8a9f0); color: #4a2d7a; }
     .tile-item:nth-child(12) .tile-icon { background: linear-gradient(135deg, #ffd89b, #19547b); color: #ffffff; }
-    /* Row 4 */
     .tile-item:nth-child(13) .tile-icon { background: linear-gradient(135deg, #f6d365, #fda085); color: #7a3a1a; }
     .tile-item:nth-child(14) .tile-icon { background: linear-gradient(135deg, #89f7fe, #66a6ff); color: #1a3a7a; }
     .tile-item:nth-child(15) .tile-icon { background: linear-gradient(135deg, #f093fb, #f5576c); color: white; }
     .tile-item:nth-child(16) .tile-icon { background: linear-gradient(135deg, #4facfe, #00f2fe); color: white; }
-    /* Row 5 */
     .tile-item:nth-child(17) .tile-icon { background: linear-gradient(135deg, #fddb92, #d1fdff); color: #5a7a3a; }
     .tile-item:nth-child(18) .tile-icon { background: linear-gradient(135deg, #a8edea, #fed6e3); color: #3a5a6a; }
     .tile-item:nth-child(19) .tile-icon { background: linear-gradient(135deg, #ffecd2, #fcb69f); color: #7a4a2a; }
     .tile-item:nth-child(20) .tile-icon { background: linear-gradient(135deg, #fbc2eb, #a6c1ee); color: #4a3a7a; }
-    /* Row 6 */
     .tile-item:nth-child(21) .tile-icon { background: linear-gradient(135deg, #c1f0c1, #a8e6cf); color: #1a5a3a; }
     .tile-item:nth-child(22) .tile-icon { background: linear-gradient(135deg, #d4a5f5, #b8a9f0); color: #3a2a6a; }
     .tile-item:nth-child(23) .tile-icon { background: linear-gradient(135deg, #ffd89b, #19547b); color: white; }
     .tile-item:nth-child(24) .tile-icon { background: linear-gradient(135deg, #f6d365, #fda085); color: #5a3a1a; }
-    /* Row 7 - Services & Our channels (span 2) */
     .tiles-grid .tile-item:nth-child(25) .tile-icon { background: linear-gradient(135deg, #667eea, #764ba2); color: white; }
     .tiles-grid .tile-item:nth-child(26) .tile-icon { background: linear-gradient(135deg, #4facfe, #00f2fe); color: white; }
 
-    /* Special icons for India tile */
     .tile-item:nth-child(4) .tile-icon i {
       text-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
 
-    /* Last two tiles span 2 columns */
     .tiles-grid .tile-item:nth-last-child(-n+2) {
       grid-column: span 2;
       aspect-ratio: auto;
@@ -302,7 +291,7 @@
       height: 50px;
     }
 
-    /* User tiles (below main tiles) */
+    /* User tiles */
     .user-tiles {
       display: flex;
       flex-wrap: wrap;
@@ -433,17 +422,17 @@
     </div>
   </div>
 
-  <!-- 26 MAIN TILES with UNIQUE DESIGNS -->
+  <!-- 26 MAIN TILES -->
   <div class="tiles-grid">
     <!-- Row 1 -->
+    <!-- ✅ EDUCATION TILE - Now with data-href and clickable -->
     <div class="tile-item" data-href="Tile1_education.html">
-    <div class="tile-icon"><i class="fas fa-book-open"></i></div>
-    <span class="tile-name">Education</span>
+      <div class="tile-icon"><i class="fas fa-book-open"></i></div>
+      <span class="tile-name">Education</span>
     </div>
     
     <div class="tile-item"><div class="tile-icon"><i class="fas fa-pencil-alt"></i></div><span class="tile-name">Exams</span></div>
     <div class="tile-item"><div class="tile-icon"><i class="fas fa-briefcase"></i></div><span class="tile-name">Jobs</span></div>
-    <!-- India tile with map + flag -->
     <div class="tile-item"><div class="tile-icon"><i class="fas fa-map-marked-alt"></i></div><span class="tile-name">India 🇮🇳</span></div>
     <!-- Row 2 -->
     <div class="tile-item"><div class="tile-icon"><i class="fas fa-file-alt"></i></div><span class="tile-name">Study materials</span></div>
@@ -470,7 +459,7 @@
     <div class="tile-item"><div class="tile-icon"><i class="fas fa-handshake"></i></div><span class="tile-name">Sponsorship internship</span></div>
     <div class="tile-item"><div class="tile-icon"><i class="fas fa-landmark"></i></div><span class="tile-name">Schemes</span></div>
     <div class="tile-item"><div class="tile-icon"><i class="fas fa-laptop"></i></div><span class="tile-name">Computer and Internet</span></div>
-    <!-- Row 7 (last two) -->
+    <!-- Row 7 -->
     <div class="tile-item"><div class="tile-icon"><i class="fas fa-concierge-bell"></i></div><span class="tile-name">Services</span></div>
     <div class="tile-item"><div class="tile-icon"><i class="fas fa-tv"></i></div><span class="tile-name">Our channels</span></div>
   </div>
@@ -506,5 +495,21 @@
     <i class="fas fa-database"></i> each tile holds authentic data · push to enter
   </div>
 </div>
+
+<!-- ===== ✅ THE IMPORTANT JAVASCRIPT TO MAKE TILES CLICKABLE ===== -->
+<script>
+  // This makes all tiles with a 'data-href' attribute navigate when clicked
+  document.querySelectorAll('.tile-item[data-href]').forEach(function(tile) {
+    tile.addEventListener('click', function() {
+      var href = this.getAttribute('data-href');
+      if (href) {
+        window.location.href = href;
+      }
+    });
+    // Optional: add a small visual cue that it's clickable
+    tile.style.cursor = 'pointer';
+  });
+</script>
+
 </body>
 </html>
