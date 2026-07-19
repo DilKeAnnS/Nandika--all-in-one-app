@@ -1,498 +1,493 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Nandika · Home</title>
-    <!-- Font Awesome 6 (free) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+  <title>Nandika · Home</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+    }
 
-        body {
-            background: #f2f5fc;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 12px 0 30px 0;
-        }
+    body {
+      background: #eef3fc;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 12px 10px 20px;
+    }
 
-        /* main app card – mobile first */
-        .app-container {
-            max-width: 420px;
-            width: 100%;
-            background: #ffffff;
-            border-radius: 36px 36px 28px 28px;
-            box-shadow: 0 20px 50px rgba(0, 10, 30, 0.12);
-            overflow: hidden;
-            padding: 18px 18px 12px;
-            position: relative;
-            margin: 0 8px;
-            transition: all 0.2s;
-        }
+    /* main app container – scrollable */
+    .app-container {
+      max-width: 430px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 36px 36px 28px 28px;
+      box-shadow: 0 20px 50px rgba(0, 10, 30, 0.10);
+      padding: 20px 18px 90px;  /* extra bottom padding for fixed AI */
+      position: relative;
+      transition: all 0.2s;
+      max-height: 95vh;
+      overflow-y: auto;   /* scrollable */
+      scroll-behavior: smooth;
+    }
 
-        /* ----- HEADER : 6 options (first row + second row + third row) ----- */
-        .header {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-bottom: 18px;
-        }
+    /* ----- HEADER : 6 options (reorganised) ----- */
+    .header {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
 
-        /* row 1: logo, welcome, lang, signin */
-        .header-row-1 {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
+    /* row 1: logo, welcome, lang, signin */
+    .header-row-1 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .app-logo {
+      background: linear-gradient(145deg, #1a3a6b, #2a5298);
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 24px;
+      box-shadow: 0 6px 12px rgba(26, 67, 113, 0.25);
+    }
+    .welcome-note {
+      font-size: 14px;
+      font-weight: 500;
+      color: #1a2639;
+      background: #eaf1fe;
+      padding: 5px 16px;
+      border-radius: 40px;
+      white-space: nowrap;
+    }
+    .lang-sign {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .lang-btn {
+      background: #f0f5fe;
+      padding: 6px 14px;
+      border-radius: 40px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #1f3a6b;
+      border: 1px solid #d4e2f7;
+    }
+    .sign-btn {
+      background: #1e3c72;
+      color: white;
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-size: 13px;
+      font-weight: 600;
+      border: none;
+      box-shadow: 0 4px 8px rgba(26, 67, 113, 0.2);
+      transition: 0.15s;
+      white-space: nowrap;
+    }
+    .sign-btn:active { opacity: 0.7; transform: scale(0.94); }
 
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
+    /* row 2: logo continues + today's topic + back arrow */
+    .header-row-2 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #f8fbff;
+      padding: 8px 14px;
+      border-radius: 60px;
+      border: 1px solid #e5edfa;
+    }
+    .logo-continue {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .mini-logo {
+      background: #2a5298;
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+    }
+    .today-topic {
+      font-weight: 600;
+      font-size: 14px;
+      color: #0b1e3a;
+      background: #e3ecfc;
+      padding: 5px 18px;
+      border-radius: 40px;
+      white-space: nowrap;
+    }
+    .back-arrow {
+      background: white;
+      width: 36px;
+      height: 36px;
+      border-radius: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      color: #1f3a6b;
+      font-size: 18px;
+      border: 1px solid #dce6f5;
+    }
+    .back-arrow:active { background: #eef4fe; }
 
-        .app-logo {
-            background: linear-gradient(145deg, #1e3c72, #2a5298);
-            width: 40px;
-            height: 40px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 22px;
-            font-weight: 600;
-            box-shadow: 0 4px 8px rgba(26, 67, 113, 0.25);
-        }
+    /* row 3: ONLY big search (location removed as requested) */
+    .header-row-3 {
+      margin-top: 2px;
+    }
+    .big-search {
+      background: #f2f7ff;
+      border-radius: 60px;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border: 1px solid #dbe6f7;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .big-search i {
+      color: #2a5298;
+      font-size: 18px;
+    }
+    .big-search input {
+      border: none;
+      background: transparent;
+      font-size: 15px;
+      width: 100%;
+      outline: none;
+      color: #1b2f4a;
+      font-weight: 500;
+    }
+    .big-search input::placeholder {
+      color: #8a9bb8;
+      font-weight: 400;
+    }
 
-        .app-logo i {
-            font-size: 22px;
-        }
+    /* ----- MAIN TILES : 26 tiles (4 per row) with full decoration ----- */
+    .tiles-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px 10px;
+      margin: 22px 0 16px 0;
+    }
 
-        .welcome-note {
-            font-size: 13px;
-            font-weight: 500;
-            color: #1a2639;
-            background: #ecf3fe;
-            padding: 4px 12px;
-            border-radius: 40px;
-            white-space: nowrap;
-        }
+    .tile-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      padding: 14px 4px 10px;
+      border-radius: 24px;
+      box-shadow: 0 6px 18px rgba(0, 20, 40, 0.06);
+      border: 1px solid #ecf2fd;
+      transition: all 0.15s;
+      cursor: default;
+      aspect-ratio: 1 / 1.1;
+      position: relative;
+      overflow: hidden;
+    }
+    /* decorative gradient overlay */
+    .tile-item::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #1e3c72, #6a9cf5);
+      opacity: 0.3;
+    }
+    .tile-item:active {
+      background: #f3f9ff;
+      transform: scale(0.94);
+      border-color: #aac3f0;
+      box-shadow: 0 2px 8px rgba(26, 67, 113, 0.10);
+    }
 
-        .lang-sign {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+    .tile-icon {
+      background: linear-gradient(135deg, #eef5ff, #dce8fa);
+      width: 56px;
+      height: 56px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      color: #1e3c72;
+      margin-bottom: 8px;
+      transition: 0.1s;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.02);
+    }
 
-        .lang-btn {
-            background: #f0f4fe;
-            padding: 5px 12px;
-            border-radius: 40px;
-            font-size: 12px;
-            font-weight: 600;
-            color: #1f3a6b;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            border: 1px solid rgba(30, 60, 114, 0.1);
-        }
+    .tile-name {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #1b2a47;
+      text-align: center;
+      line-height: 1.3;
+      letter-spacing: 0.2px;
+    }
 
-        .sign-btn {
-            background: #1e3c72;
-            color: white;
-            padding: 5px 14px;
-            border-radius: 40px;
-            font-size: 12px;
-            font-weight: 600;
-            border: none;
-            box-shadow: 0 3px 6px rgba(26, 67, 113, 0.2);
-            transition: 0.15s;
-            white-space: nowrap;
-        }
-        .sign-btn:active { opacity: 0.7; transform: scale(0.96); }
+    /* special tile colors (variety) */
+    .tile-item:nth-child(6n+1) .tile-icon { background: #e2ecfe; color: #1f4a8a; }
+    .tile-item:nth-child(6n+2) .tile-icon { background: #e0f0e8; color: #1b6b4a; }
+    .tile-item:nth-child(6n+3) .tile-icon { background: #fce9e9; color: #a53f3f; }
+    .tile-item:nth-child(6n+4) .tile-icon { background: #f3e8fd; color: #6b3f8a; }
+    .tile-item:nth-child(6n+5) .tile-icon { background: #fef3de; color: #a76f2a; }
+    .tile-item:nth-child(6n+6) .tile-icon { background: #ddf0fc; color: #1c6f8f; }
 
-        /* row 2: logo continues + today's topic + back arrow */
-        .header-row-2 {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: #f8faff;
-            padding: 6px 12px 6px 12px;
-            border-radius: 60px;
-            border: 1px solid #e9effa;
-        }
+    /* tile 25 & 26 (Services, Our channels) span 2 columns */
+    .tiles-grid .tile-item:nth-last-child(-n+2) {
+      grid-column: span 2;
+      aspect-ratio: auto;
+      flex-direction: row;
+      gap: 14px;
+      padding: 10px 12px;
+    }
+    .tiles-grid .tile-item:nth-last-child(-n+2) .tile-icon {
+      width: 48px;
+      height: 48px;
+    }
 
-        .logo-continue {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .logo-continue .mini-logo {
-            background: #2a5298;
-            width: 30px;
-            height: 30px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 16px;
-        }
+    /* ----- USER TILES (below main tiles) ----- */
+    .user-tiles {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px 10px;
+      margin: 6px 0 20px 0;
+      padding: 14px 0;
+      border-top: 1px solid #e4edfc;
+      border-bottom: 1px solid #e4edfc;
+    }
+    .user-tile {
+      background: #f6faff;
+      padding: 8px 18px;
+      border-radius: 60px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #1d2f4a;
+      border: 1px solid #d5e3fc;
+      transition: 0.1s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .user-tile:active { background: #e1edfe; transform: scale(0.94); }
+    .user-tile i { color: #2a5298; font-size: 16px; }
 
-        .today-topic {
-            font-weight: 600;
-            font-size: 14px;
-            color: #0b1e3a;
-            background: #e3ecfc;
-            padding: 4px 16px;
-            border-radius: 40px;
-            white-space: nowrap;
-        }
+    /* ----- BOTTOM BARS (5) with AI integrated ----- */
+    .bottom-bar {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 10px 0 4px;
+      margin-top: 8px;
+      border-top: 1px solid #eef4fd;
+      position: relative;
+    }
+    .bottom-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 11px;
+      color: #5f6f8a;
+      gap: 2px;
+      padding: 4px 8px;
+      border-radius: 30px;
+      border: none;
+      background: transparent;
+      font-weight: 500;
+    }
+    .bottom-item i { font-size: 22px; color: #41587a; }
+    .bottom-item.active { color: #1e3c72; font-weight: 600; }
+    .bottom-item.active i { color: #1e3c72; }
+    .bottom-item:active { background: #e3edfc; transform: scale(0.90); }
 
-        .back-arrow {
-            background: white;
-            width: 32px;
-            height: 32px;
-            border-radius: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            color: #1f3a6b;
-            font-size: 16px;
-            border: 1px solid #dee9f5;
-            transition: 0.1s;
-        }
-        .back-arrow:active { background: #eef4fe; }
+    /* AI TOOL integrated in bottom bar (fixed) */
+    .ai-badge {
+      background: linear-gradient(145deg, #0b254b, #1e3c72);
+      color: white;
+      padding: 8px 16px 8px 14px;
+      border-radius: 60px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      font-size: 13px;
+      border: 1px solid rgba(255,255,255,0.15);
+      box-shadow: 0 4px 16px rgba(18, 52, 106, 0.3);
+      white-space: nowrap;
+    }
+    .ai-badge i { color: white; font-size: 18px; }
 
-        /* row 3: location + search */
-        .header-row-3 {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: 2px;
-        }
+    /* FIXED AI at bottom (outside scroll) */
+    .fixed-ai-container {
+      position: sticky;
+      bottom: 10px;
+      display: flex;
+      justify-content: center;
+      margin-top: 8px;
+      padding: 6px 0 0;
+      background: transparent;
+      pointer-events: none; /* allow clicks on items behind? we want clickable */
+    }
+    .fixed-ai-container .ai-badge {
+      pointer-events: auto;
+      cursor: default;
+    }
+    .fixed-ai-container .ai-badge:active { transform: scale(0.94); opacity: 0.8; }
 
-        .location-tag {
-            background: #ecf3fe;
-            padding: 5px 16px 5px 12px;
-            border-radius: 40px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            font-weight: 500;
-            color: #1f3a6b;
-            border: 1px solid #d5e2f7;
-        }
-        .location-tag i { color: #2a5298; }
+    /* small note */
+    .footer-note {
+      font-size: 9px;
+      text-align: center;
+      color: #8f9fb0;
+      margin-top: 12px;
+      opacity: 0.6;
+      letter-spacing: 0.3px;
+    }
 
-        .search-icon {
-            background: #1e3c72;
-            color: white;
-            width: 38px;
-            height: 38px;
-            border-radius: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 17px;
-            box-shadow: 0 4px 8px rgba(26, 67, 113, 0.2);
-            border: none;
-            transition: 0.1s;
-        }
-        .search-icon:active { background: #14315c; transform: scale(0.94); }
-
-        /* ----- MAIN TILES : 26 tiles (4 per row) ----- */
-        .tiles-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 14px 8px;
-            margin: 18px 0 18px 0;
-        }
-
-        .tile-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: #ffffff;
-            padding: 10px 2px 8px;
-            border-radius: 20px;
-            box-shadow: 0 4px 12px rgba(0, 20, 40, 0.04);
-            transition: all 0.15s;
-            border: 1px solid #f0f5ff;
-            cursor: default;
-            aspect-ratio: 1 / 1.1;
-        }
-        .tile-item:active {
-            background: #f4f9ff;
-            transform: scale(0.94);
-            border-color: #b6cff0;
-        }
-
-        .tile-icon {
-            background: linear-gradient(135deg, #eef5ff, #dce8fa);
-            width: 50px;
-            height: 50px;
-            border-radius: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: #1e3c72;
-            margin-bottom: 6px;
-            transition: 0.1s;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
-        }
-
-        .tile-name {
-            font-size: 11px;
-            font-weight: 500;
-            color: #1b2a47;
-            text-align: center;
-            line-height: 1.3;
-            letter-spacing: 0.2px;
-        }
-
-        /* special tile colors (variety) */
-        .tile-item:nth-child(6n+1) .tile-icon { background: #e2ecfe; color: #1f4a8a; }
-        .tile-item:nth-child(6n+2) .tile-icon { background: #e0f0e8; color: #1b6b4a; }
-        .tile-item:nth-child(6n+3) .tile-icon { background: #fce9e9; color: #a53f3f; }
-        .tile-item:nth-child(6n+4) .tile-icon { background: #f3e8fd; color: #6b3f8a; }
-        .tile-item:nth-child(6n+5) .tile-icon { background: #fef3de; color: #a76f2a; }
-        .tile-item:nth-child(6n+6) .tile-icon { background: #ddf0fc; color: #1c6f8f; }
-
-        /* User tiles (users | mentors | owner | team | partners) */
-        .user-tiles {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            gap: 10px 6px;
-            margin: 8px 0 14px 0;
-            padding: 10px 0;
-            border-top: 1px solid #e4ecf9;
-            border-bottom: 1px solid #e4ecf9;
-        }
-
-        .user-tile {
-            background: #f6faff;
-            padding: 6px 14px;
-            border-radius: 60px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 13px;
-            font-weight: 500;
-            color: #1d2f4a;
-            border: 1px solid #d9e6fc;
-            transition: 0.1s;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.02);
-        }
-        .user-tile:active { background: #e1edfe; transform: scale(0.94); }
-        .user-tile i { color: #2a5298; font-size: 14px; }
-
-        /* ----- BOTTOM BARS (5) ----- */
-        .bottom-bar {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            padding: 12px 0 4px 0;
-            margin-top: 6px;
-            border-top: 1px solid #eef4fd;
-        }
-
-        .bottom-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-size: 11px;
-            color: #5f6f8a;
-            gap: 3px;
-            transition: 0.1s;
-            background: transparent;
-            padding: 4px 8px;
-            border-radius: 30px;
-            border: none;
-            font-weight: 500;
-        }
-        .bottom-item i { font-size: 20px; color: #41587a; }
-        .bottom-item.active { color: #1e3c72; font-weight: 600; }
-        .bottom-item.active i { color: #1e3c72; }
-        .bottom-item:active { background: #e3edfc; transform: scale(0.92); }
-
-        /* ----- FLOATING NANDIKA AI TOOL ----- */
-        .floating-ai {
-            position: sticky;
-            bottom: 12px;
-            left: 100%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(145deg, #0b254b, #1e3c72);
-            color: white;
-            padding: 12px 16px 12px 14px;
-            border-radius: 80px;
-            gap: 10px;
-            box-shadow: 0 8px 24px rgba(18, 52, 106, 0.4);
-            font-weight: 600;
-            font-size: 14px;
-            margin-top: 6px;
-            margin-bottom: 4px;
-            width: fit-content;
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: 0.1s;
-            cursor: default;
-            backdrop-filter: blur(2px);
-            letter-spacing: 0.3px;
-        }
-        .floating-ai i {
-            font-size: 20px;
-            background: rgba(255,255,255,0.15);
-            padding: 6px;
-            border-radius: 40px;
-        }
-        .floating-ai:active { transform: scale(0.94); opacity: 0.8; }
-
-        /* small push button style */
-        .push-btn {
-            transition: 0.08s;
-        }
-        .push-btn:active { opacity: 0.6; transform: scale(0.90); }
-
-        /* extra spacing */
-        .spacer { height: 4px; }
-
-        /* tile grid 7th row partial (services, our channels) */
-        .tiles-grid .tile-item:last-child {
-            grid-column: span 2;
-            aspect-ratio: auto;
-            flex-direction: row;
-            gap: 10px;
-            padding: 8px 6px;
-        }
-        .tiles-grid .tile-item:last-child .tile-icon {
-            width: 40px;
-            height: 40px;
-        }
-
-        /* responsive fine-tune */
-        @media (max-width: 380px) {
-            .tile-icon { width: 40px; height: 40px; font-size: 20px; }
-            .tile-name { font-size: 9px; }
-            .welcome-note { font-size: 11px; padding: 2px 8px; }
-        }
-    </style>
+    /* responsive */
+    @media (max-width: 400px) {
+      .tile-icon { width: 46px; height: 46px; font-size: 22px; }
+      .tile-name { font-size: 10px; }
+      .welcome-note { font-size: 12px; padding: 4px 10px; }
+    }
+  </style>
 </head>
 <body>
 <div class="app-container">
 
-    <!-- HEADER (6 options) -->
-    <div class="header">
-        <!-- row 1 -->
-        <div class="header-row-1">
-            <div class="logo-area">
-                <div class="app-logo"><i class="fas fa-graduation-cap"></i></div>
-                <span class="welcome-note"><i class="far fa-hand-peace" style="margin-right:4px;"></i>Welcome</span>
-            </div>
-            <div class="lang-sign">
-                <span class="lang-btn"><i class="fas fa-globe"></i> EN</span>
-                <span class="sign-btn push-btn"><i class="fas fa-user-circle"></i> Sign in</span>
-            </div>
-        </div>
-
-        <!-- row 2 : logo continues + today's topic + back arrow -->
-        <div class="header-row-2">
-            <div class="logo-continue">
-                <div class="mini-logo"><i class="fas fa-brain"></i></div>
-                <span style="font-weight:500; font-size:13px; color:#1d2f4a;">Nandika</span>
-            </div>
-            <span class="today-topic"><i class="far fa-calendar-alt" style="margin-right:5px;"></i>Today's pick</span>
-            <div class="back-arrow push-btn"><i class="fas fa-arrow-left"></i></div>
-        </div>
-
-        <!-- row 3 : location + search -->
-        <div class="header-row-3">
-            <span class="location-tag"><i class="fas fa-map-pin"></i> Education / Medical / Course</span>
-            <div class="search-icon push-btn"><i class="fas fa-search"></i></div>
-        </div>
+  <!-- HEADER -->
+  <div class="header">
+    <!-- row 1 -->
+    <div class="header-row-1">
+      <div class="logo-area">
+        <div class="app-logo"><i class="fas fa-graduation-cap"></i></div>
+        <span class="welcome-note"><i class="far fa-hand-peace" style="margin-right:4px;"></i>Welcome</span>
+      </div>
+      <div class="lang-sign">
+        <span class="lang-btn"><i class="fas fa-globe"></i> EN</span>
+        <span class="sign-btn"><i class="fas fa-user-circle"></i> Sign in</span>
+      </div>
     </div>
 
-    <!-- 26 MAIN TILES (4 per row) -->
-    <div class="tiles-grid">
-        <!-- row 1 -->
-        <div class="tile-item push-btn"><div class="tile-icon"><i class="fas fa-book-open"></i></div><span class="tile-name">Education</span></div>
-        <div class="tile-item push-btn"><div class="tile-icon"><i class="fas fa-pencil-alt"></i></div><span class="tile-name">Exams</span></div>
-        <div class="tile-item push-btn"><div class="tile-icon"><i class="fas fa-briefcase"></i></div><span class="tile-name">Jobs</span></div>
-        <div class="tile-item push-btn"><div class="tile-icon"><i class="fas fa-flag"></i></div><span class="tile-name">India</span></div>
-        <!-- row 2 -->
-        <div class="tile-item push-btn"><div class="tile-icon"><i class="fas fa-file-alt"></i></div><span class="tile-name">Study materials</span></div>
-        <div class="tile-item push-btn"><div class="tile-icon"><i class="fas fa-edit"></i></div><span class="tile-name">Application forms</span></div>
-        <div class="tile-item push-btn"><div class="tile-icon"><i class="fas fa-check-double"></i></div><span class="tile-name">Mock test</span></div>
-        <div class="tile-item push-btn"><div class="tile-icon"><i class="fas fa-store"></i></div><span class="tile-name">Business</span></div>
-        <!-- row 3 -->
-        <div class="tile-item push-btn"><div class="tile-icon"><i class="fas fa-newspaper"></i></div><span class="tile-name">Current affairs</span></div>
-        <div class="tile-item push-btn"><div class="tile-icon"><i class="fas fa-chart-bar"></i></div><span class="tile-name">Results</span></div>
-        <div class="tile-item push-btn"><div class="tile-icon"><i class="fas fa-robot"></i></div><span class="tile-name">Automation</span></div>
-        <div class="tile-item push-btn"><div class="tile-icon"><i class="fas fa-shopping-cart"></i></div><span class="tile-name">Shopping</span></div>
-        <!-- row 4 -->
-        <div class="tile-item push-btn"><div class="tile-icon"><i class="fas fa-users"></i></div><span class="tile-name">Group Discussion</span></div>
-        <div class="tile-item push-btn"><div class="tile-icon"><i class="fas fa-chart-line"></i></div><span class="tile-name">Personality Development</span></div>
-        <div class="tile-item push-btn"><div class="tile-icon"><i class="fas fa-microchip"></i></div><span class="tile-name">AI tools</span></div>
-        <div class="tile-item push-btn"><div class="tile-icon"><i class="fas fa-plane"></i></div><span class="tile-name">Abroad</span></div>
-        <!-- row 5 -->
-        <div class="tile-item push-btn"><div class="tile-icon"><i class="fas fa-smile"></i></div><span class="tile-name">Relex Fun and Meditation</span></div>
-        <div class="tile-item push-btn"><div class="tile-icon"><i class="fas fa-headphones"></i></div><span class="tile-name">E newspaper and audio books</span></div>
-        <div class="tile-item push-btn"><div class="tile-icon"><i class="fas fa-magazine"></i></div><span class="tile-name">Magazines</span></div>
-        <div class="tile-item push-btn"><div class="tile-icon"><i class="fas fa-futbol"></i></div><span class="tile-name">Sports</span></div>
-        <!-- row 6 -->
-        <div class="tile-item push-btn"><div class="tile-icon"><i class="fas fa-coins"></i></div><span class="tile-name">Budget</span></div>
-        <div class="tile-item push-btn"><div class="tile-icon"><i class="fas fa-handshake"></i></div><span class="tile-name">Sponsorship internship</span></div>
-        <div class="tile-item push-btn"><div class="tile-icon"><i class="fas fa-landmark"></i></div><span class="tile-name">Schemes</span></div>
-        <div class="tile-item push-btn"><div class="tile-icon"><i class="fas fa-laptop"></i></div><span class="tile-name">Computer and Internet</span></div>
-        <!-- row 7 (partial) -->
-        <div class="tile-item push-btn" style="grid-column: span 2;"><div class="tile-icon"><i class="fas fa-concierge-bell"></i></div><span class="tile-name">Services</span></div>
-        <div class="tile-item push-btn" style="grid-column: span 2;"><div class="tile-icon"><i class="fas fa-tv"></i></div><span class="tile-name">Our channels</span></div>
+    <!-- row 2 -->
+    <div class="header-row-2">
+      <div class="logo-continue">
+        <div class="mini-logo"><i class="fas fa-brain"></i></div>
+        <span style="font-weight:600; font-size:15px; color:#1d2f4a;">Nandika</span>
+      </div>
+      <span class="today-topic"><i class="far fa-calendar-alt" style="margin-right:6px;"></i>Today's pick</span>
+      <div class="back-arrow"><i class="fas fa-arrow-left"></i></div>
     </div>
 
-    <!-- USER TILES -->
-    <div class="user-tiles">
-        <span class="user-tile push-btn"><i class="fas fa-user-circle"></i> Users</span>
-        <span class="user-tile push-btn"><i class="fas fa-chalkboard-teacher"></i> Mentors</span>
-        <span class="user-tile push-btn"><i class="fas fa-user-tie"></i> Owner</span>
-        <span class="user-tile push-btn"><i class="fas fa-users-cog"></i> Team</span>
-        <span class="user-tile push-btn"><i class="fas fa-handshake"></i> Partners</span>
+    <!-- row 3: BIG SEARCH (only search) -->
+    <div class="header-row-3">
+      <div class="big-search">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Search inside tile... (e.g. Exams, AI tools)" />
+        <i class="fas fa-microphone" style="font-size:16px; color:#6a8fc0;"></i>
+      </div>
     </div>
+  </div>
 
-    <!-- BOTTOM BARS (Home, Meetings, Notifications, Earning, Profile) -->
-    <div class="bottom-bar">
-        <div class="bottom-item active"><i class="fas fa-home"></i><span>Home</span></div>
-        <div class="bottom-item"><i class="fas fa-calendar-check"></i><span>Meetings</span></div>
-        <div class="bottom-item"><i class="fas fa-bell"></i><span>Notifications</span></div>
-        <div class="bottom-item"><i class="fas fa-wallet"></i><span>Earning</span></div>
-        <div class="bottom-item"><i class="fas fa-user-circle"></i><span>Profile</span></div>
-    </div>
+  <!-- 26 MAIN TILES (full decoration, 4 per row) -->
+  <div class="tiles-grid">
+    <!-- row 1 -->
+    <div class="tile-item"><div class="tile-icon"><i class="fas fa-book-open"></i></div><span class="tile-name">Education</span></div>
+    <div class="tile-item"><div class="tile-icon"><i class="fas fa-pencil-alt"></i></div><span class="tile-name">Exams</span></div>
+    <div class="tile-item"><div class="tile-icon"><i class="fas fa-briefcase"></i></div><span class="tile-name">Jobs</span></div>
+    <div class="tile-item"><div class="tile-icon"><i class="fas fa-flag"></i></div><span class="tile-name">India</span></div>
+    <!-- row 2 -->
+    <div class="tile-item"><div class="tile-icon"><i class="fas fa-file-alt"></i></div><span class="tile-name">Study materials</span></div>
+    <div class="tile-item"><div class="tile-icon"><i class="fas fa-edit"></i></div><span class="tile-name">Application forms</span></div>
+    <div class="tile-item"><div class="tile-icon"><i class="fas fa-check-double"></i></div><span class="tile-name">Mock test</span></div>
+    <div class="tile-item"><div class="tile-icon"><i class="fas fa-store"></i></div><span class="tile-name">Business</span></div>
+    <!-- row 3 -->
+    <div class="tile-item"><div class="tile-icon"><i class="fas fa-newspaper"></i></div><span class="tile-name">Current affairs</span></div>
+    <div class="tile-item"><div class="tile-icon"><i class="fas fa-chart-bar"></i></div><span class="tile-name">Results</span></div>
+    <div class="tile-item"><div class="tile-icon"><i class="fas fa-robot"></i></div><span class="tile-name">Automation</span></div>
+    <div class="tile-item"><div class="tile-icon"><i class="fas fa-shopping-cart"></i></div><span class="tile-name">Shopping</span></div>
+    <!-- row 4 -->
+    <div class="tile-item"><div class="tile-icon"><i class="fas fa-users"></i></div><span class="tile-name">Group Discussion</span></div>
+    <div class="tile-item"><div class="tile-icon"><i class="fas fa-chart-line"></i></div><span class="tile-name">Personality Development</span></div>
+    <div class="tile-item"><div class="tile-icon"><i class="fas fa-microchip"></i></div><span class="tile-name">AI tools</span></div>
+    <div class="tile-item"><div class="tile-icon"><i class="fas fa-plane"></i></div><span class="tile-name">Abroad</span></div>
+    <!-- row 5 -->
+    <div class="tile-item"><div class="tile-icon"><i class="fas fa-smile"></i></div><span class="tile-name">Relex Fun and Meditation</span></div>
+    <div class="tile-item"><div class="tile-icon"><i class="fas fa-headphones"></i></div><span class="tile-name">E newspaper and audio books</span></div>
+    <div class="tile-item"><div class="tile-icon"><i class="fas fa-magazine"></i></div><span class="tile-name">Magazines</span></div>
+    <div class="tile-item"><div class="tile-icon"><i class="fas fa-futbol"></i></div><span class="tile-name">Sports</span></div>
+    <!-- row 6 -->
+    <div class="tile-item"><div class="tile-icon"><i class="fas fa-coins"></i></div><span class="tile-name">Budget</span></div>
+    <div class="tile-item"><div class="tile-icon"><i class="fas fa-handshake"></i></div><span class="tile-name">Sponsorship internship</span></div>
+    <div class="tile-item"><div class="tile-icon"><i class="fas fa-landmark"></i></div><span class="tile-name">Schemes</span></div>
+    <div class="tile-item"><div class="tile-icon"><i class="fas fa-laptop"></i></div><span class="tile-name">Computer and Internet</span></div>
+    <!-- row 7 (last two span 2 cols) -->
+    <div class="tile-item"><div class="tile-icon"><i class="fas fa-concierge-bell"></i></div><span class="tile-name">Services</span></div>
+    <div class="tile-item"><div class="tile-icon"><i class="fas fa-tv"></i></div><span class="tile-name">Our channels</span></div>
+  </div>
 
-    <!-- FLOATING NANDIKA AI TOOL -->
-    <div class="floating-ai push-btn">
-        <i class="fas fa-robot"></i> 
-        <span>Nandika AI <span style="font-weight:300; margin-left:4px; font-size:12px; opacity:0.8;">⚡ online</span></span>
-        <i class="fas fa-chevron-circle-right" style="font-size:14px; opacity:0.7;"></i>
-    </div>
+  <!-- USER TILES (below main tiles) -->
+  <div class="user-tiles">
+    <span class="user-tile"><i class="fas fa-user-circle"></i> Users</span>
+    <span class="user-tile"><i class="fas fa-chalkboard-teacher"></i> Mentors</span>
+    <span class="user-tile"><i class="fas fa-user-tie"></i> Owner</span>
+    <span class="user-tile"><i class="fas fa-users-cog"></i> Team</span>
+    <span class="user-tile"><i class="fas fa-handshake"></i> Partners</span>
+  </div>
 
-    <!-- small note: all tiles are push buttons (data ready) -->
-    <div style="font-size:9px; text-align:center; color:#8f9fb0; margin-top:10px; opacity:0.6; letter-spacing:0.3px;">
-        <i class="fas fa-database"></i> each tile holds authentic data · push to enter
+  <!-- BOTTOM BARS (Home, Meetings, Notifications, Earning, Profile) + AI fixed -->
+  <div class="bottom-bar">
+    <div class="bottom-item active"><i class="fas fa-home"></i><span>Home</span></div>
+    <div class="bottom-item"><i class="fas fa-calendar-check"></i><span>Meetings</span></div>
+    <div class="bottom-item"><i class="fas fa-bell"></i><span>Notifications</span></div>
+    <div class="bottom-item"><i class="fas fa-wallet"></i><span>Earning</span></div>
+    <div class="bottom-item"><i class="fas fa-user-circle"></i><span>Profile</span></div>
+  </div>
+
+  <!-- FIXED AI TOOL (position: sticky inside container) -->
+  <div class="fixed-ai-container">
+    <div class="ai-badge">
+      <i class="fas fa-robot"></i>
+      <span>Nandika AI <span style="font-weight:300; margin-left:4px; font-size:11px; opacity:0.8;">⚡ online</span></span>
+      <i class="fas fa-chevron-circle-right" style="font-size:14px; opacity:0.7;"></i>
     </div>
+  </div>
+
+  <div class="footer-note">
+    <i class="fas fa-database"></i> each tile holds authentic data · push to enter
+  </div>
 </div>
 </body>
 </html>
