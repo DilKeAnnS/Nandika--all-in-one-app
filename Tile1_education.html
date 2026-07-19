@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <title>Nandika · Education Hub · All Users</title>
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: #eef3fc;
+            padding: 16px 12px 30px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .app-container {
+            max-width: 1200px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 40px;
+            box-shadow: 0 20px 60px rgba(0, 10, 30, 0.08);
+            padding: 24px 22px 30px;
+            position: relative;
+        }
+
+        /* ----- HEADER ----- */
+        .header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            gap: 12px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .app-logo {
+            background: linear-gradient(145deg, #1a3a6b, #2a5298);
+            width: 50px;
+            height: 50px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 26px;
+            box-shadow: 0 6px 16px rgba(26, 67, 113, 0.25);
+        }
+
+        .header-title h1 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #0A1E3C;
+            letter-spacing: -0.5px;
+        }
+
+        .header-title p {
+            font-size: 13px;
+            color: #5f7a9a;
+            font-weight: 500;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            background: #f2f7ff;
+            border-radius: 40px;
+            padding: 10px 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid #dbe6f7;
+            min-width: 200px;
+        }
+
+        .search-box i {
+            color: #2a5298;
+        }
+
+        .search-box input {
+            border: none;
+            background: transparent;
+            outline: none;
+            font-size: 14px;
+            width: 100%;
+        }
+
+        .filter-btn {
+            background: #1e3c72;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 13px;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
+        }
+
+        .filter-btn:hover {
+            background: #14315c;
+            transform: scale(1.02);
+        }
+
+        /* ----- CATEGORY TABS ----- */
+        .category-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
+            border-bottom: 2px solid #eef4fd;
+            padding-bottom: 12px;
+        }
+
+        .category-tab {
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 13px;
+            background: #f4f8ff;
+            color: #41587a;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: 0.2s;
+        }
+
+        .category-tab:hover {
+            background: #e3edfc;
+        }
+
+        .category-tab.active {
+            background: #1e3c72;
+            color: white;
+            border-color: #1e3c72;
+        }
+
+        .category-tab .count {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            margin-left: 6px;
+        }
+
+        .category-tab.active .count {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* ----- USER TYPE GRID ----- */
+        .user-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+
+        .user-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 18px 16px 16px;
+            border: 1px solid #ecf2fd;
+            box-shadow: 0 4px 12px rgba(0, 20, 40, 0.04);
+            transition: all 0.2s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .user-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(26, 67, 113, 0.10);
+            border-color: #b6cff0;
+        }
+
+        .user-card:active {
+            transform: scale(0.97);
+        }
+
+        .user-card .badge-cat {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 3px 12px;
+            border-radius: 30px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-academic { background: #e2ecfe; color: #1f4a8a; }
+        .badge-professional { background: #e0f0e8; color: #1b6b4a; }
+        .badge-institutional { background: #fce9e9; color: #a53f3f; }
+        .badge-research { background: #f3e8fd; color: #6b3f8a; }
+        .badge-social { background: #fef3de; color: #a76f2a; }
+        .badge-specialized { background: #ddf0fc; color: #1c6f8f; }
+
+        .user-card .icon-large {
+            font-size: 32px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .user-card h3 {
+            font-size: 16px;
+            color: #0A1E3C;
+            margin-bottom: 2px;
+        }
+
+        .user-card .tagline {
+            font-size: 12px;
+            color: #5f7a9a;
+            margin-bottom: 8px;
+        }
+
+        .user-card .features-preview {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-top: 8px;
+        }
+
+        .user-card .features-preview span {
+            background: #f4f8ff;
+            font-size: 10px;
+            padding: 2px 10px;
+            border-radius: 20px;
+            color: #1f3a6b;
+        }
+
+        .user-card .view-btn {
+            margin-top: 12px;
+            background: #1e3c72;
+            color: white;
+            border: none;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.15s;
+            width: 100%;
+        }
+
+        .user-card .view-btn:hover {
+            background: #14315c;
+        }
+
+        /* ----- DETAILED DASHBOARD (expanded view) ----- */
+        .dashboard-panel {
+            background: #f8fbff;
+            border-radius: 28px;
+            padding: 24px 22px;
+            margin-top: 10px;
+            border: 1px solid #e5edfa;
+            display: none;
+            animation: fadeSlide 0.3s ease;
+        }
+
+        .dashboard-panel.active {
+            display: block;
+        }
+
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin-bottom: 18px;
+        }
+
+        .dashboard-header .title-group h2 {
+            font-size: 22px;
+            color: #0A1E3C;
+        }
+
+        .dashboard-header .title-group p {
+            color: #5f7a9a;
+            font-size: 14px;
+        }
+
+        .dashboard-header .close-dash {
+            background: #eef4fd;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 40px;
+            font-size: 18px;
+            cursor: pointer;
+            color: #41587a;
+            transition: 0.15s;
+        }
+
+        .dashboard-header .close-dash:hover {
+            background: #dce6f5;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 16px;
+        }
+
+        .dash-card {
+            background: white;
+            border-radius: 18px;
+            padding: 16px 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            border: 1px solid #eef4fd;
+        }
+
+        .dash-card .dash-icon {
+            font-size: 24px;
+            margin-bottom: 6px;
+        }
+
+        .dash-card h4 {
+            font-size: 14px;
+            color: #0A1E3C;
+            margin-bottom: 4px;
+        }
+
+        .dash-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .dash-card ul li {
+            font-size: 12px;
+            color: #41587a;
+            padding: 2px 0;
+            border-bottom: 1px solid #f4f8ff;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .dash-card ul li:last-child {
+            border-bottom: none;
+        }
+
+        .dash-card ul li i {
+            color: #2a5298;
+            width: 16px;
+            font-size: 11px;
+        }
+
+        .dash-card .action-btn {
+            margin-top: 10px;
+            background: #1e3c72;
+            color: white;
+            border: none;
+            padding: 5px 14px;
+            border-radius: 30px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .dash-card .action-btn:hover {
+            background: #14315c;
+        }
+
+        /* ----- CENTRAL DATA API STATUS ----- */
+        .api-status {
+            margin-top: 24px;
+            background: #eaf1fe;
+            border-radius: 16px;
+            padding: 14px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            border-left: 4px solid #2a5298;
+        }
+
+        .api-status .status-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .api-status .status-left i {
+            color: #2a5298;
+            font-size: 22px;
+        }
+
+        .api-status .status-left .label {
+            font-weight: 600;
+            color: #0A1E3C;
+            font-size: 14px;
+        }
+
+        .api-status .status-left .desc {
+            font-size: 13px;
+            color: #41587a;
+        }
+
+        .api-status .sync-btn {
+            background: #1e3c72;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: 0.15s;
+        }
+
+        .api-status .sync-btn:hover {
+            background: #14315c;
+        }
+
+        .api-status .sync-btn i {
+            margin-right: 6px;
+        }
+
+        /* ----- RESPONSIVE ----- */
+        @media (max-width: 700px) {
+            .app-container {
+                padding: 16px 14px;
+            }
+            .header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .header-actions {
+                flex-direction: column;
+            }
+            .search-box {
+                width: 100%;
+            }
+            .category-tabs {
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                padding-bottom: 8px;
+            }
+            .category-tab {
+                white-space: nowrap;
+                font-size: 12px;
+                padding: 6px 14px;
+            }
+            .user-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            .api-status {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .user-grid {
+                grid-template-columns: 1fr;
+            }
+            .dashboard-header {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="app-container">
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="logo-area">
+            <div class="app-logo"><i class="fas fa-graduation-cap"></i></div>
+            <div class="header-title">
+                <h1>📚 Education Hub</h1>
+                <p><i class="fas fa-users"></i> 25 User Types · Central Data Sync</p>
+            </div>
+        </div>
+        <div class="header-actions">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search user type..." id="userSearch" oninput="filterUsers()" />
+            </div>
+            <button class="filter-btn" onclick="resetFilters()"><i class="fas fa-sync-alt"></i> Reset</button>
+        </div>
+    </div>
+
+    <!-- CATEGORY TABS -->
+    <div class="category-tabs" id="categoryTabs">
+        <span class="category-tab active" data-cat="all" onclick="filterCategory('all')">All <span class="count">25</span></span>
+        <span class="category-tab" data-cat="academic" onclick="filterCategory('academic')">🎓 Academic <span class="count">5</span></span>
+        <span class="category-tab" data-cat="professional" onclick="filterCategory('professional')">💼 Professional <span class="count">7</span></span>
+        <span class="category-tab" data-cat="institutional" onclick="filterCategory('institutional')">🏛️ Institutional <span class="count">3</span></span>
+        <span class="category-tab" data-cat="research" onclick="filterCategory('research')">🔬 Research <span class="count">2</span></span>
+        <span class="category-tab" data-cat="social" onclick="filterCategory('social')">🌍 Social <span class="count">2</span></span>
+        <span class="category-tab" data-cat="specialized" onclick="filterCategory('specialized')">🏅 Specialized <span class="count">6</span></span>
+    </div>
+
+    <!-- USER TYPE GRID -->
+    <div class="user-grid" id="userGrid"></div>
+
+    <!-- DETAILED DASHBOARD PANEL -->
+    <div class="dashboard-panel" id="dashboardPanel">
+        <div class="dashboard-header">
+            <div class="title-group">
+                <h2 id="dashTitle">User Dashboard</h2>
+                <p id="dashSubtitle">Complete feature set and resources</p>
+            </div>
+            <button class="close-dash" onclick="closeDashboard()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="dashboard-grid" id="dashGrid"></div>
+    </div>
+
+    <!-- CENTRAL DATA API STATUS -->
+    <div class="api-status">
+        <div class="status-left">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <div>
+                <div class="label">📊 Central Data Hub · API v2.0</div>
+                <div class="desc"><span id="syncStatus">✅ All user data synced</span> · <span id="dataCount">25</span> user types active</div>
+            </div>
+        </div>
+        <button class="sync-btn" onclick="syncData()"><i class="fas fa-sync-alt"></i> Sync Now</button>
+    </div>
+
+</div>
+
+<script>
+    // ------------------------------------------------------------
+    // COMPLETE USER DATA (25 TYPES) — as per your expanded list
+    // Each user has: id, name, tagline, category, icon, features[], dashboard[]
+    // ------------------------------------------------------------
+    const userTypes = [
+        // ----- ACADEMIC (5) -----
+        {
+            id: 1,
+            name: "Student",
+            tagline: "8th se 12th tak",
+            category: "academic",
+            icon: "🎓",
+            features: ["10 Streams", "13-Point Roadmap", "15-Point Framework", "Career Predictor"],
+            dashboard: [
+                { icon: "📚", title: "Stream Selection", items: ["Medical", "Non-Medical", "Commerce", "Arts", "Sports"] },
+                { icon: "🎯", title: "Career Map", items: ["100+ Job Roles", "Salary Graph", "Industry Trends"] },
+                { icon: "🧠", title: "Self Assessment", items: ["AI Quiz", "Learning Style", "Weak Subject Analysis"] },
+                { icon: "📅", title: "Class-wise Timeline", items: ["8th to 12th Plan", "Exam Schedule", "College Prep"] },
+                { icon: "🏫", title: "Colleges & Exams", items: ["Top Colleges", "Entrance Exams", "Scholarships"] }
+            ]
+        },
+        {
+            id: 2,
+            name: "Dropper",
+            tagline: "Exam repeat kar rahe?",
+            category: "academic",
+            icon: "🔄",
+            features: ["Performance Analysis", "90-Day Plan", "Crash Course", "Motivation Support"],
+            dashboard: [
+                { icon: "📊", title: "Performance Analysis", items: ["Weak Subject Report", "Mistake Analysis", "Progress Graph"] },
+                { icon: "📅", title: "Crash Plan", items: ["90-Day Schedule", "Daily Timetable", "Subject Priority"] },
+                { icon: "🏆", title: "Coaching & Tests", items: ["Best Coaching", "Test Series", "Rank Predictor"] },
+                { icon: "🧠", title: "Motivation & Health", items: ["Counselor Connect", "Stress Management", "Peer Support"] }
+            ]
+        },
+        {
+            id: 3,
+            name: "Graduate",
+            tagline: "BA/BSc/BCom done",
+            category: "academic",
+            icon: "🎓",
+            features: ["PG Entrance", "Job Roles", "Skill Courses", "Study Abroad"],
+            dashboard: [
+                { icon: "📝", title: "PG Entrance", items: ["CUET-PG", "CAT", "GATE", "JAM"] },
+                { icon: "💼", title: "Job Opportunities", items: ["Govt Jobs", "Private Jobs", "Freelancing"] },
+                { icon: "🛠️", title: "Skill Development", items: ["Certification", "Online Courses", "Soft Skills"] },
+                { icon: "🌍", title: "Study Abroad", items: ["Country Selection", "Scholarships", "Visa Guide"] }
+            ]
+        },
+        {
+            id: 4,
+            name: "Post Graduate",
+            tagline: "MA/MSc/MCom done",
+            category: "academic",
+            icon: "🧠",
+            features: ["PhD Guide", "Research", "Teaching", "High-Level Jobs"],
+            dashboard: [
+                { icon: "🔬", title: "Research Options", items: ["PhD Entrance", "Methodology", "Publication Guide"] },
+                { icon: "👨‍🏫", title: "Teaching Careers", items: ["Assistant Professor", "Eligibility Tests", "Curriculum"] },
+                { icon: "💼", title: "High-Level Jobs", items: ["Research Scientist", "Data Scientist", "Policy Analyst"] },
+                { icon: "🌍", title: "International", items: ["Post-doc", "Visiting Faculty", "Global Research"] }
+            ]
+        },
+        {
+            id: 5,
+            name: "Stream Switcher",
+            tagline: "Subject change karna hai?",
+            category: "academic",
+            icon: "📊",
+            features: ["Credit Transfer", "Eligibility", "Time Calculator", "Career Impact"],
+            dashboard: [
+                { icon: "🔄", title: "Switch Guide", items: ["Eligibility Checker", "Credit Transfer", "Time Loss"] },
+                { icon: "📋", title: "Process Automation", items: ["Application Form", "Document Checklist", "Tracker"] },
+                { icon: "📊", title: "Comparative Analysis", items: ["Stream Comparison", "Salary Potential", "Skill Gap"] },
+                { icon: "💰", title: "Financial Planning", items: ["Cost Calculator", "Scholarships", "Loan Guide"] }
+            ]
+        },
+
+        // ----- PROFESSIONAL (7) -----
+        {
+            id: 6,
+            name: "Job Switcher",
+            tagline: "Nayi job chahiye?",
+            category: "professional",
+            icon: "💼",
+            features: ["Skill Gap", "Resume Builder", "Interview Prep", "Salary Calculator"],
+            dashboard: [
+                { icon: "📊", title: "Career Transition", items: ["Current vs Target", "Salary Jump", "Skill Gap"] },
+                { icon: "📄", title: "Resume & Branding", items: ["Resume Optimizer", "LinkedIn Profile", "Cover Letter"] },
+                { icon: "🎤", title: "Interview Prep", items: ["AI Mock Interview", "Company Prep", "Negotiation"] },
+                { icon: "📋", title: "Job Portal", items: ["Job Search", "Application Tracker", "Networking"] }
+            ]
+        },
+        {
+            id: 7,
+            name: "Profession Switcher",
+            tagline: "Field badalni hai?",
+            category: "professional",
+            icon: "🔄",
+            features: ["Transition Roadmap", "Bridge Courses", "Risk Analysis", "Market Analysis"],
+            dashboard: [
+                { icon: "🗺️", title: "Transition Roadmap", items: ["Assessment", "Timeline", "Training Plan"] },
+                { icon: "📚", title: "Bridge Courses", items: ["Foundation", "Certification", "Internships"] },
+                { icon: "📊", title: "Market Analysis", items: ["Demand-Supply", "Salary", "Growth Potential"] },
+                { icon: "🤝", title: "Networking", items: ["Industry Events", "Alumni", "Mentor Matching"] }
+            ]
+        },
+        {
+            id: 8,
+            name: "Professional",
+            tagline: "Doctor/CA/Lawyer etc",
+            category: "professional",
+            icon: "⚕️",
+            features: ["Certification", "Practice Setup", "Upskilling", "Compliance"],
+            dashboard: [
+                { icon: "📜", title: "Certification", items: ["Renewal", "Specialization", "International"] },
+                { icon: "🏢", title: "Practice Setup", items: ["Private Practice", "Legal Structure", "Staff"] },
+                { icon: "📚", title: "Upskilling", items: ["Latest Tools", "Niche Specialization", "Leadership"] },
+                { icon: "🏛️", title: "Compliance", items: ["Tax Filing", "Audit", "Legal Obligations"] }
+            ]
+        },
+        {
+            id: 9,
+            name: "Working Person",
+            tagline: "Job ke saath padhai",
+            category: "professional",
+            icon: "🌙",
+            features: ["Flexible Learning", "Work-Study Balance", "Career Advancement"],
+            dashboard: [
+                { icon: "⏰", title: "Flexible Learning", items: ["Evening Programs", "Weekend Courses", "Online"] },
+                { icon: "📊", title: "Work-Study Balance", items: ["Time Planner", "Energy Management", "Priority"] },
+                { icon: "🎯", title: "Career Advancement", items: ["Employer Programs", "Promotion Paths", "Skill Map"] },
+                { icon: "📱", title: "Technology Tools", items: ["LMS", "Productivity Apps", "Mobile Learning"] }
+            ]
+        },
+        {
+            id: 10,
+            name: "Corporate Trainer",
+            tagline: "Company me train karte hain?",
+            category: "professional",
+            icon: "🏢",
+            features: ["Leadership Dev", "Certification", "ROI Calculator", "Training Analytics"],
+            dashboard: [
+                { icon: "📋", title: "Training Development", items: ["Needs Analysis", "Curriculum", "Content"] },
+                { icon: "👥", title: "Leadership Dev", items: ["Assessment", "Executive Coaching", "Succession"] },
+                { icon: "📜", title: "Certification", items: ["Six Sigma", "PMP", "Agile", "HR Analytics"] },
+                { icon: "📊", title: "ROI Calculator", items: ["Cost-Benefit", "Retention Impact", "Productivity"] }
+            ]
+        },
+        {
+            id: 11,
+            name: "Entrepreneur",
+            tagline: "Business start karna hai?",
+            category: "professional",
+            icon: "🧑‍💼",
+            features: ["Idea Validation", "Business Plan", "Funding", "Scaling"],
+            dashboard: [
+                { icon: "💡", title: "Idea Validation", items: ["Assessment", "Market Test", "Competitor Analysis"] },
+                { icon: "📋", title: "Business Plan", items: ["Executive Summary", "Financial Projections", "Strategy"] },
+                { icon: "💰", title: "Funding Options", items: ["Venture Capital", "Angel Investors", "Govt Schemes"] },
+                { icon: "🚀", title: "Growth & Scaling", items: ["Digital Marketing", "Team Building", "Expansion"] }
+            ]
+        },
+        {
+            id: 12,
+            name: "Life Coach",
+            tagline: "Logon ko guide karte hain?",
+            category: "professional",
+            icon: "🧘",
+            features: ["ICF Certification", "Coaching Skills", "Client Management", "Community"],
+            dashboard: [
+                { icon: "🎓", title: "Certification", items: ["ICF", "NLP", "Psychological", "Business"] },
+                { icon: "🧠", title: "Coaching Skills", items: ["Goal Setting", "Questioning", "Mindfulness"] },
+                { icon: "👥", title: "Client Management", items: ["Session Planner", "Progress Tracking", "Feedback"] },
+                { icon: "🌍", title: "Community", items: ["Coach Network", "Mastermind", "Webinars"] }
+            ]
+        },
+
+        // ----- INSTITUTIONAL (3) -----
+        {
+            id: 13,
+            name: "School/College Admin",
+            tagline: "Institution manage karte hain?",
+            category: "institutional",
+            icon: "🏫",
+            features: ["Affiliation", "Accreditation", "Student Analytics", "Infrastructure"],
+            dashboard: [
+                { icon: "📜", title: "Affiliation Guide", items: ["CBSE", "ICSE", "State Board", "IB"] },
+                { icon: "⭐", title: "Accreditation", items: ["NAAC", "NBA", "NIRF", "Self-Study"] },
+                { icon: "📊", title: "Student Analytics", items: ["Enrollment", "Retention", "Placement"] },
+                { icon: "🏗️", title: "Infrastructure", items: ["Classrooms", "Labs", "Library", "Sports"] }
+            ]
+        },
+        {
+            id: 14,
+            name: "Teacher/Professor",
+            tagline: "Padhate hain?",
+            category: "institutional",
+            icon: "👨‍🏫",
+            features: ["Professional Dev", "Research", "Assessment", "Certification"],
+            dashboard: [
+                { icon: "📚", title: "Professional Dev", items: ["NEP 2020", "Teaching Methods", "Classroom"] },
+                { icon: "🔬", title: "Research", items: ["Paper Writing", "Journals", "Conferences"] },
+                { icon: "📝", title: "Assessment", items: ["Question Bank", "AI Grading", "Progress Tracker"] },
+                { icon: "🏅", title: "Certification", items: ["Board Certification", "Online Courses", "Awards"] }
+            ]
+        },
+        {
+            id: 15,
+            name: "Government Officer",
+            tagline: "Sarkari naukri mein hain?",
+            category: "institutional",
+            icon: "🏛️",
+            features: ["Departmental Exams", "Promotion Planner", "Training", "Work-Life Balance"],
+            dashboard: [
+                { icon: "📚", title: "Departmental Exams", items: ["Syllabus", "Calendar", "Mock Tests"] },
+                { icon: "📈", title: "Promotion Planner", items: ["Timeline", "Qualifications", "Tracker"] },
+                { icon: "🎓", title: "Training", items: ["LBSNAA", "Online Courses", "International"] },
+                { icon: "💼", title: "Work-Life", items: ["Stress Management", "Time Management", "Health"] }
+            ]
+        },
+
+        // ----- RESEARCH (2) -----
+        {
+            id: 16,
+            name: "Researcher",
+            tagline: "Research karte hain?",
+            category: "research",
+            icon: "🔬",
+            features: ["Paper Writing", "Grants", "Collaboration", "Metrics"],
+            dashboard: [
+                { icon: "✍️", title: "Paper Writing", items: ["Structure", "Stats", "Journal Finder"] },
+                { icon: "💰", title: "Grants", items: ["ICSSR", "DST", "International", "Proposal"] },
+                { icon: "🤝", title: "Collaboration", items: ["Global Network", "Interdisciplinary", "Partnerships"] },
+                { icon: "📊", title: "Metrics", items: ["Citations", "Impact Factor", "Awards"] }
+            ]
+        },
+        {
+            id: 17,
+            name: "Vocational Skilled",
+            tagline: "ITI/Diploma/Skill",
+            category: "research",
+            icon: "🔧",
+            features: ["Job Placement", "Certification", "Business Setup", "International"],
+            dashboard: [
+                { icon: "💼", title: "Job Opportunities", items: ["Industry Jobs", "Govt Vacancies", "Apprenticeship"] },
+                { icon: "📜", title: "Certification", items: ["Advanced", "Supervisor", "Quality", "Safety"] },
+                { icon: "🏢", title: "Business Setup", items: ["Small Business", "Registration", "Marketing"] },
+                { icon: "🌍", title: "International", items: ["Global Jobs", "Skill Recognition", "Work Visa"] }
+            ]
+        },
+
+        // ----- SOCIAL (2) -----
+        {
+            id: 18,
+            name: "NGO Worker",
+            tagline: "Samaj seva karte hain?",
+            category: "social",
+            icon: "🌍",
+            features: ["Project Proposal", "Funding", "CSR Partnerships", "Impact Analysis"],
+            dashboard: [
+                { icon: "📝", title: "Project Proposal", items: ["Template", "Budget", "Impact", "Timeline"] },
+                { icon: "💰", title: "Funding", items: ["Govt Schemes", "International", "CSR", "Grants"] },
+                { icon: "🤝", title: "CSR Partnerships", items: ["Corporate Connect", "Agreements", "Compliance"] },
+                { icon: "📊", title: "Impact Analysis", items: ["Metrics", "Annual Report", "Social ROI"] }
+            ]
+        },
+        {
+            id: 19,
+            name: "Parent/Guardian",
+            tagline: "Bachche ka future banayein?",
+            category: "social",
+            icon: "👨‍👩‍👧",
+            features: ["Education Guide", "Financial Planning", "Emotional Support", "Comparison"],
+            dashboard: [
+                { icon: "🎯", title: "Education Guide", items: ["Stream Selection", "Career Path", "Exam Prep"] },
+                { icon: "💰", title: "Financial Planning", items: ["Cost Estimator", "Investment", "Scholarships"] },
+                { icon: "🧠", title: "Emotional Support", items: ["Communication", "Motivation", "Progress"] },
+                { icon: "📊", title: "Comparison Tools", items: ["College Compare", "Career Compare", "Skills"] }
+            ]
+        },
+
+        // ----- SPECIALIZED (6) -----
+        {
+            id: 20,
+            name: "Sports Person",
+            tagline: "Khel/athlete hain?",
+            category: "specialized",
+            icon: "🏅",
+            features: ["Training", "Sports Education", "Career Planning", "Sponsorship"],
+            dashboard: [
+                { icon: "🏋️", title: "Training & Coaching", items: ["Sports Training", "Fitness", "Nutrition"] },
+                { icon: "📚", title: "Sports Education", items: ["Academic Paths", "Quota Admissions", "Scholarships"] },
+                { icon: "🏆", title: "Career Planning", items: ["Professional Careers", "Coaching", "Management"] },
+                { icon: "💰", title: "Financial Planning", items: ["Sponsorship", "Govt Schemes", "Post-Career"] }
+            ]
+        },
+        {
+            id: 21,
+            name: "Artist/Creative",
+            tagline: "Creative field mein hain?",
+            category: "specialized",
+            icon: "🎨",
+            features: ["Art Disciplines", "Education Paths", "Career Options", "Portfolio"],
+            dashboard: [
+                { icon: "🎭", title: "Art Disciplines", items: ["Performing", "Visual", "Digital", "Literature"] },
+                { icon: "📚", title: "Education Paths", items: ["Fine Arts", "Music", "Dance", "Theater"] },
+                { icon: "💼", title: "Career Options", items: ["Professional Artist", "Teacher", "Therapist"] },
+                { icon: "📱", title: "Portfolio & Marketing", items: ["Portfolio Builder", "Social Media", "Gallery"] }
+            ]
+        },
+        {
+            id: 22,
+            name: "International Student",
+            tagline: "Abroad mein padhai?",
+            category: "specialized",
+            icon: "🌍",
+            features: ["Country Selection", "Application", "Scholarship", "Visa Guide"],
+            dashboard: [
+                { icon: "🌏", title: "Country Selection", items: ["Comparison", "Cost Analysis", "Employment"] },
+                { icon: "📋", title: "Application", items: ["Form Generator", "Document Checklist", "Essay"] },
+                { icon: "💰", title: "Scholarship Finder", items: ["Government", "University", "Private"] },
+                { icon: "🎓", title: "Study Abroad Support", items: ["IELTS/TOEFL", "Visa", "Accommodation"] }
+            ]
+        },
+        {
+            id: 23,
+            name: "Differently Abled",
+            tagline: "Inclusive education",
+            category: "specialized",
+            icon: "♿",
+            features: ["Accessible Education", "Career Options", "Assistive Technology", "Support"],
+            dashboard: [
+                { icon: "♿", title: "Accessible Education", items: ["Special Schools", "Inclusive Education", "Tech"] },
+                { icon: "💼", title: "Career Options", items: ["Inclusive Workplaces", "Recruitment", "Entrepreneurship"] },
+                { icon: "🛠️", title: "Assistive Technology", items: ["Screen Readers", "Speech Tools", "Mobility"] },
+                { icon: "🤝", title: "Support Network", items: ["NGOs", "Support Groups", "Counseling"] }
+            ]
+        },
+        {
+            id: 24,
+            name: "Senior Citizen",
+            tagline: "Learning never stops!",
+            category: "specialized",
+            icon: "👴",
+            features: ["Lifelong Learning", "Digital Literacy", "Health", "Social Engagement"],
+            dashboard: [
+                { icon: "📚", title: "Lifelong Learning", items: ["Simplified Courses", "Certificate", "Volunteer"] },
+                { icon: "💻", title: "Digital Literacy", items: ["Smartphone", "Internet Safety", "Online Banking"] },
+                { icon: "🧠", title: "Health & Wellness", items: ["Nutrition", "Mental Health", "Meditation"] },
+                { icon: "🤝", title: "Social Engagement", items: ["Groups", "Volunteering", "Activities"] }
+            ]
+        },
+        {
+            id: 25,
+            name: "Retired Professional",
+            tagline: "Knowledge sharing",
+            category: "specialized",
+            icon: "🧓",
+            features: ["Encore Careers", "Mentoring", "Legacy Building", "Financial Planning"],
+            dashboard: [
+                { icon: "💼", title: "Encore Careers", items: ["Consulting", "Board Memberships", "Advisory"] },
+                { icon: "🤝", title: "Mentoring", items: ["Corporate", "Student", "Leadership Coaching"] },
+                { icon: "📚", title: "Legacy Building", items: ["Memoirs", "Knowledge Sharing", "Case Studies"] },
+                { icon: "📊", title: "Financial Planning", items: ["Retirement Budget", "Investment", "Healthcare"] }
+            ]
+        }
+    ];
+
+    // ------------------------------------------------------------
+    // RENDER FUNCTIONS
+    // ------------------------------------------------------------
+    let currentCategory = 'all';
+    let currentSearch = '';
+    let activeUserId = null;
+
+    function renderUsers() {
+        const grid = document.getElementById('userGrid');
+        const filtered = userTypes.filter(u => {
+            const matchCat = currentCategory === 'all' || u.category === currentCategory;
+            const matchSearch = u.name.toLowerCase().includes(currentSearch.toLowerCase()) ||
+                                u.tagline.toLowerCase().includes(currentSearch.toLowerCase()) ||
+                                u.features.some(f => f.toLowerCase().includes(currentSearch.toLowerCase()));
+            return matchCat && matchSearch;
+        });
+
+        if (filtered.length === 0) {
+            grid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:40px; color:#5f7a9a;">
+                                <i class="fas fa-search" style="font-size:40px; display:block; margin-bottom:12px;"></i>
+                                No user types found. Try a different search or category.
+                            </div>`;
+            return;
+        }
+
+        grid.innerHTML = filtered.map(u => `
+            <div class="user-card" onclick="openDashboard(${u.id})" data-id="${u.id}">
+                <span class="badge-cat badge-${u.category}">${u.category}</span>
+                <span class="icon-large">${u.icon}</span>
+                <h3>${u.name}</h3>
+                <div class="tagline">${u.tagline}</div>
+                <div class="features-preview">
+                    ${u.features.map(f => `<span>${f}</span>`).join('')}
+                </div>
+                <button class="view-btn" onclick="event.stopPropagation(); openDashboard(${u.id})">
+                    <i class="fas fa-arrow-right"></i> View Dashboard
+                </button>
+            </div>
+        `).join('');
+    }
+
+    function openDashboard(id) {
+        const user = userTypes.find(u => u.id === id);
+        if (!user) return;
+        activeUserId = id;
+
+        document.getElementById('dashTitle').textContent = `${user.icon} ${user.name}`;
+        document.getElementById('dashSubtitle').textContent = `${user.tagline} · ${user.features.join(' · ')}`;
+
+        const grid = document.getElementById('dashGrid');
+        grid.innerHTML = user.dashboard.map(d => `
+            <div class="dash-card">
+                <div class="dash-icon">${d.icon}</div>
+                <h4>${d.title}</h4>
+                <ul>
+                    ${d.items.map(item => `<li><i class="fas fa-check-circle"></i> ${item}</li>`).join('')}
+                </ul>
+                <button class="action-btn" onclick="event.stopPropagation(); alert('🔗 Navigating to ${d.title}...')">
+                    <i class="fas fa-arrow-right"></i> Explore
+                </button>
+            </div>
+        `).join('');
+
+        document.getElementById('dashboardPanel').classList.add('active');
+        document.getElementById('dashboardPanel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function closeDashboard() {
+        document.getElementById('dashboardPanel').classList.remove('active');
+        activeUserId = null;
+    }
+
+    // ------------------------------------------------------------
+    // FILTER FUNCTIONS
+    // ------------------------------------------------------------
+    function filterCategory(cat) {
+        currentCategory = cat;
+        document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+        document.querySelector(`.category-tab[data-cat="${cat}"]`).classList.add('active');
+        renderUsers();
+    }
+
+    function filterUsers() {
+        currentSearch = document.getElementById('userSearch').value;
+        renderUsers();
+    }
+
+    function resetFilters() {
+        document.getElementById('userSearch').value = '';
+        currentSearch = '';
+        filterCategory('all');
+    }
+
+    // ------------------------------------------------------------
+    // SYNC FUNCTION (simulated central data API)
+    // ------------------------------------------------------------
+    function syncData() {
+        const btn = document.querySelector('.sync-btn');
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Syncing...';
+        btn.disabled = true;
+
+        setTimeout(() => {
+            document.getElementById('syncStatus').textContent = '✅ All user data synced to Central Hub';
+            document.getElementById('dataCount').textContent = userTypes.length;
+            btn.innerHTML = '<i class="fas fa-check"></i> Synced';
+            btn.disabled = false;
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-sync-alt"></i> Sync Now';
+            }, 1500);
+        }, 1200);
+    }
+
+    // ------------------------------------------------------------
+    // INIT
+    // ------------------------------------------------------------
+    renderUsers();
+
+    // Auto-sync on load
+    setTimeout(syncData, 500);
+</script>
+</body>
+</html>
